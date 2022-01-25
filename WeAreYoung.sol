@@ -10,13 +10,21 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 //smart contract which will be governed by weareyoung governance token
 contract WeAreYoung is Ownable {
+      
+    address public owner= this ;
 
     uint256 private permissableMembers;
 
     event MemberNumberIncreased(uint256 _revisedPermissableMembers);
 
+    
+    modifier onlyOwner{
+        require(msg.sender==owner , "not valid access");
+        _;
+    }
+    
     //setter function
-    function setNewMembers(uint256 _revisedPermissableMembers)private  returns(bool){
+    function setNewMembers(uint256 _revisedPermissableMembers)private onlyOwner  returns(bool){
         permissableMembers =_revisedPermissableMembers;
         emit MemberNumberIncreased( permissableMembers);
         return true;
