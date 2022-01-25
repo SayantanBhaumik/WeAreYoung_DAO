@@ -10,6 +10,10 @@ import "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFractio
 import "@openzeppelin/contracts/governance/extensions/GovernorTimelockControl.sol";
 
 contract WAYgovernor is Governor, GovernorSettings, GovernorCountingSimple, GovernorVotes, GovernorVotesQuorumFraction, GovernorTimelockControl {
+
+    //takes WAY token as voting power
+    //specifies the timelock till which we withhold the execution
+    
     constructor(ERC20Votes _token, TimelockController _timelock)
         Governor("WAYgovernor")
 
